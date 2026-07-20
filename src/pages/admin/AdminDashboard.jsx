@@ -11,6 +11,7 @@ export default function AdminDashboard() {
     { title: "الامتحانات", icon: "✅", link: "/admin/exams" },
     { title: "طرق الدفع", icon: "💳", link: "/admin/payments" },
     { title: "الإشعارات", icon: "🔔", link: "/admin/notifications" },
+    { title: "الإحصائيات", icon: "📊", link: "/admin/statistics" },
     { title: "الإعدادات", icon: "⚙️", link: "/admin/settings" }
   ];
 

@@ -1,6 +1,14 @@
 import {useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 export default function Settings(){
+
+const navigate=useNavigate();
+
+function logout(){
+localStorage.removeItem("admin");
+navigate("/admin/login");
+}
 
 const [platformName,setPlatformName]=useState("منصة التميز التعليمي");
 const [phone,setPhone]=useState("01000000000");
@@ -67,6 +75,15 @@ className="bg-blue-600 text-white px-8 py-3 rounded-xl mt-6"
 >
 
 حفظ الإعدادات
+
+</button>
+
+<button
+onClick={logout}
+className="bg-red-600 text-white px-8 py-3 rounded-xl mt-6 mr-4"
+>
+
+تسجيل الخروج
 
 </button>
 

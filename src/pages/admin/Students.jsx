@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Students(){
 
@@ -29,10 +30,21 @@ return(
 إدارة الطلاب
 </h1>
 
+<div className="flex items-center gap-4 mb-6">
+
 <input
 placeholder="بحث..."
-className="border rounded-lg p-3 w-80 mb-6"
+className="border rounded-lg p-3 w-80"
 />
+
+<Link
+to="/admin/students/add"
+className="bg-blue-600 text-white px-6 py-3 rounded-xl"
+>
+إضافة طالب
+</Link>
+
+</div>
 
 <table className="w-full bg-white shadow rounded-xl">
 

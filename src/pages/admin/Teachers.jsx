@@ -1,4 +1,5 @@
 import {useState} from "react";
+import {Link} from "react-router-dom";
 
 export default function Teachers(){
 
@@ -26,9 +27,12 @@ return(
 المدرسين
 </h1>
 
-<button className="bg-blue-600 text-white px-5 py-3 rounded-xl mb-6">
+<Link
+to="/admin/teachers/add"
+className="inline-block bg-blue-600 text-white px-5 py-3 rounded-xl mb-6"
+>
 إضافة مدرس
-</button>
+</Link>
 
 <div className="grid grid-cols-3 gap-6">
 
