@@ -25,6 +25,11 @@ import Notifications from "./pages/admin/Notifications";
 import Statistics from "./pages/admin/Statistics";
 import Settings from "./pages/admin/Settings";
 
+import StudentLogin from "./pages/student/Login";
+import StudentDashboard from "./pages/student/Dashboard";
+import TeacherLogin from "./pages/teacher/Login";
+import TeacherDashboard from "./pages/teacher/Dashboard";
+
 function Home() {
   return (
     <div className="bg-light">
@@ -45,6 +50,18 @@ function App() {
         <Route path="/" element={<Home />} />
 
         <Route path="/admin/login" element={<Login />} />
+
+        <Route path="/student/login" element={<StudentLogin />} />
+        <Route
+          path="/student/dashboard"
+          element={<ProtectedRoute role="student"><StudentDashboard /></ProtectedRoute>}
+        />
+
+        <Route path="/teacher/login" element={<TeacherLogin />} />
+        <Route
+          path="/teacher/dashboard"
+          element={<ProtectedRoute role="teacher"><TeacherDashboard /></ProtectedRoute>}
+        />
 
         <Route
           path="/admin/dashboard"
