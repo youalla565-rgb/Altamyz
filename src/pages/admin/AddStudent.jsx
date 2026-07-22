@@ -1,129 +1,140 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { addStudent } from "../../data/store";
 
 export default function AddStudent() {
 
-const [student,setStudent]=useState({
+  const navigate = useNavigate();
 
-name:"",
-email:"",
-phone:"",
-parentPhone:"",
-grade:"",
-password:""
+  const [student, setStudent] = useState({
 
-});
+    name: "",
+    email: "",
+    phone: "",
+    parentPhone: "",
+    grade: "",
+    password: ""
 
-function handleChange(e){
+  });
 
-setStudent({
+  function handleChange(e) {
 
-...student,
+    setStudent({
 
-[e.target.name]:e.target.value
+      ...student,
 
-});
+      [e.target.name]: e.target.value
 
-}
+    });
 
-function saveStudent(e){
+  }
 
-e.preventDefault();
+  function saveStudent(e) {
 
-console.log(student);
+    e.preventDefault();
 
-alert("تم إضافة الطالب بنجاح");
+    if (!student.name || !student.email || !student.password) {
+      alert("من فضلك أدخل الاسم والبريد الإلكتروني وكلمة المرور");
+      return;
+    }
 
-}
+    addStudent(student);
 
-return(
+    alert("تم إضافة الطالب بنجاح");
 
-<div className="max-w-3xl mx-auto mt-10 bg-white shadow-xl rounded-xl p-8">
+    navigate("/admin/students");
 
-<h1 className="text-3xl font-bold mb-8">
+  }
 
-إضافة طالب
+  return (
 
-</h1>
+    <div className="max-w-3xl mx-auto mt-10 bg-white shadow-xl rounded-xl p-8">
 
-<form onSubmit={saveStudent}>
+      <h1 className="text-3xl font-bold mb-8">
 
-<input
-name="name"
-placeholder="اسم الطالب"
-className="border p-3 rounded w-full mb-4"
-onChange={handleChange}
-/>
+        إضافة طالب
 
-<input
-name="email"
-type="email"
-placeholder="البريد الإلكتروني"
-className="border p-3 rounded w-full mb-4"
-onChange={handleChange}
-/>
+      </h1>
 
-<input
-name="phone"
-placeholder="رقم الهاتف"
-className="border p-3 rounded w-full mb-4"
-onChange={handleChange}
-/>
+      <form onSubmit={saveStudent}>
 
-<input
-name="parentPhone"
-placeholder="رقم ولي الأمر"
-className="border p-3 rounded w-full mb-4"
-onChange={handleChange}
-/>
+        <input
+          name="name"
+          placeholder="اسم الطالب"
+          className="border p-3 rounded w-full mb-4"
+          onChange={handleChange}
+        />
 
-<select
+        <input
+          name="email"
+          type="email"
+          placeholder="البريد الإلكتروني"
+          className="border p-3 rounded w-full mb-4"
+          onChange={handleChange}
+        />
 
-name="grade"
+        <input
+          name="phone"
+          placeholder="رقم الهاتف"
+          className="border p-3 rounded w-full mb-4"
+          onChange={handleChange}
+        />
 
-className="border p-3 rounded w-full mb-4"
+        <input
+          name="parentPhone"
+          placeholder="رقم ولي الأمر"
+          className="border p-3 rounded w-full mb-4"
+          onChange={handleChange}
+        />
 
-onChange={handleChange}
+        <select
 
->
+          name="grade"
 
-<option>اختر الصف الدراسي</option>
+          className="border p-3 rounded w-full mb-4"
 
-<option>الصف الأول الثانوي</option>
+          onChange={handleChange}
 
-<option>الصف الثاني الثانوي</option>
+        >
 
-<option>الصف الثالث الثانوي</option>
+          <option value="">اختر الصف الدراسي</option>
 
-</select>
+          <option>الصف الأول الثانوي</option>
 
-<input
+          <option>الصف الثاني الثانوي</option>
 
-name="password"
+          <option>الصف الثالث الثانوي</option>
 
-type="password"
+        </select>
 
-placeholder="كلمة المرور"
+        <input
 
-className="border p-3 rounded w-full mb-6"
+          name="password"
 
-onChange={handleChange}
+          type="password"
 
-/>
+          placeholder="كلمة المرور"
 
-<button
+          className="border p-3 rounded w-full mb-6"
 
-className="bg-blue-600 text-white px-8 py-3 rounded-xl w-full"
+          onChange={handleChange}
 
->
+        />
 
-إضافة الطالب
+        <button
 
-</button>
+          className="bg-blue-600 text-white px-8 py-3 rounded-xl w-full"
 
-</form>
+        >
 
-</div>
+          إضافة الطالب
 
-)
+        </button>
+
+      </form>
+
+    </div>
+
+  )
 
 }

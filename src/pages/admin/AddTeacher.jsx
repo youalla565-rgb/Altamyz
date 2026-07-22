@@ -1,6 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { addTeacher } from "../../data/store";
 
 export default function AddTeacher() {
+  const navigate = useNavigate();
+
   const [teacher, setTeacher] = useState({
     name: "",
     subject: "",
@@ -19,17 +23,16 @@ export default function AddTeacher() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    console.log(teacher);
+    if (!teacher.name || !teacher.email || !teacher.password) {
+      alert("من فضلك أدخل الاسم والبريد الإلكتروني وكلمة المرور");
+      return;
+    }
+
+    addTeacher(teacher);
 
     alert("تم إضافة المدرس بنجاح");
 
-    setTeacher({
-      name: "",
-      subject: "",
-      email: "",
-      phone: "",
-      password: ""
-    });
+    navigate("/admin/teachers");
   }
 
   return (

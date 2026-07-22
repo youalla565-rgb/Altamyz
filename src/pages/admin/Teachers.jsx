@@ -1,23 +1,15 @@
 import {useState} from "react";
 import {Link} from "react-router-dom";
+import { getTeachers, deleteTeacher } from "../../data/store";
 
 export default function Teachers(){
 
-const [teachers]=useState([
+const [teachers, setTeachers] = useState(getTeachers());
 
-{
-id:1,
-name:"د/ محمد",
-subject:"الرياضيات"
-},
-
-{
-id:2,
-name:"د/ أحمد",
-subject:"الفيزياء"
+function handleDelete(id) {
+  if (!confirm("متأكد إنك عايز تحذف المدرس ده؟")) return;
+  setTeachers(deleteTeacher(id));
 }
-
-]);
 
 return(
 
@@ -34,7 +26,7 @@ className="inline-block bg-blue-600 text-white px-5 py-3 rounded-xl mb-6"
 إضافة مدرس
 </Link>
 
-<div className="grid grid-cols-3 gap-6">
+<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
 {
 
@@ -54,19 +46,34 @@ className="rounded-full mx-auto"
 {item.name}
 </h2>
 
-<p className="text-center">
+<p className="text-center text-slate-500">
 {item.subject}
 </p>
 
-<button className="bg-yellow-500 text-white px-4 py-2 rounded mt-5 w-full">
+<div className="flex gap-2 mt-5">
+
+<button className="bg-yellow-500 text-white px-4 py-2 rounded flex-1">
 تعديل
 </button>
+
+<button
+onClick={() => handleDelete(item.id)}
+className="bg-red-600 text-white px-4 py-2 rounded flex-1"
+>
+حذف
+</button>
+
+</div>
 
 </div>
 
 ))
 
 }
+
+{teachers.length === 0 && (
+  <p className="text-slate-400 col-span-full text-center">لا يوجد مدرسين</p>
+)}
 
 </div>
 
