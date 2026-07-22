@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة التميز | Altamyz Platform</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.6rem 1.4rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">التميز | Altamyz</a>
+        <nav>
+            <ul>
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#services">الخدمات</a></li>
+                <li><a href="#about">عن المنصة</a></li>
+                <li><a href="#contact">تواصل معنا</a></li>
+            </ul>
+        </nav>
+        <button class="btn" onclick="handleAuth()">تسجيل الدخول</button>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <h1>أهلاً بك في منصة التميز</h1>
+            <p>البيئة المتكاملة لتطوير المهارات وإدارة المحتوى والخدمات بكل سهولة وسلاسة.</p>
+            <button class="btn" onclick="alert('تم بدء تشغيل المنصة بنجاح!')">ابدأ الآن</button>
+        </section>
+
+        <section class="features" id="services">
+            <div class="card">
+                <h3>لوحة التحكم</h3>
+                <p>إدارة كاملة وسهولة في متابعة المحتوى مع واجهة مستخدم سريعة.</p>
+            </div>
+            <div class="card">
+                <h3>سرعة الأداء</h3>
+                <p>تصميم خفيف وبنية برمجية مهيأة لضمان أسرع استجابة للمستخدم.</p>
+            </div>
+            <div class="card">
+                <h3>حماية وأمان</h3>
+                <p>أنظمة حماية متكاملة لحفظ البيانات وضمان استقرار الخدمة.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 منصة التميز (Altamyz). جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script>
+        function handleAuth() {
+            alert('نافذة تسجيل الدخول جاهزة للتوصيل مع قاعدة البيانات.');
+        }
+    </script>
+</body>
+</html>
