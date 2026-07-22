@@ -1,15 +1,27 @@
-import {Navigate} from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
-export default function ProtectedRoute({children}){
+const KEYS = {
+  admin: "admin",
+  student: "studentAuth",
+  teacher: "teacherAuth",
+};
 
-const admin=localStorage.getItem("admin");
+const LOGIN_PATHS = {
+  admin: "/admin/login",
+  student: "/student/login",
+  teacher: "/teacher/login",
+};
 
-if(admin!=="true"){
+export default function ProtectedRoute({ children, role = "admin" }) {
 
-return <Navigate to="/admin/login"/>
+  const storageKey = KEYS[role];
+  const value = localStorage.getItem(storageKey);
 
-}
+  const isAuthed = role === "admin" ? value === "true" : !!value;
 
-return children;
+  if (!isAuthed) {
+    return <Navigate to={LOGIN_PATHS[role]} />;
+  }
 
+  return children;
 }
